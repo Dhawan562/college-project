@@ -18,13 +18,13 @@ let prescriptionSchema = mongoose.Schema({
         type: Date,
         required: true
     },
-    imageUrl: {
-        type: String,
+    image: {
+        type: Buffer,
         required: true
     },
     status: {
-        //Number or String depending if we are using enum
         type: String,
+        enum: ['pending', 'completed', 'cancelled'],
         required: true
     },
     completionDate: {

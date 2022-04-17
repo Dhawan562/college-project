@@ -18,12 +18,8 @@ let userSchema = mongoose.Schema({
         required: false
     },
     type: {
-        //Number or String depending if we are using enum
-        type: Number,
-        required: true
-    },
-    isLoggedIn: {
-        type: Boolean,
+        type: String,
+        enum: ['doctor', 'patient', 'pharmacy'],
         required: true
     }
 });
