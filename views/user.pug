@@ -1,0 +1,26 @@
+html
+head
+   title Person
+   body
+      form(action = "/prescription", method = "POST")
+        div
+            label(for = "username") Username: 
+            input(name = "username")
+        br
+        div
+            label(for = "password") Password: 
+            input(name = "password")
+        br
+        div
+            label(for = "fullName") Full Name: 
+            input(name = "fullName")
+        br
+        div
+            label(for = "organisation") Organisation: 
+            input(name = "organisation")
+        br
+        div
+            label(for = "type") Type: 
+            input(name = "type")
+        br
+        button(type = "submit") Create new user
