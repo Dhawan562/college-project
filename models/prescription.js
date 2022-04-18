@@ -1,36 +1,34 @@
 const { ObjectId } = require('mongodb');
 const mongoose = require('mongoose');
 
-let prescriptionSchema = mongoose.Schema({
-    createdById: {
-        type: ObjectId,
-        required: true
-    },
-    pharmacyId: {
-        type: ObjectId,
-        required: true
-    },
-    patientId: {
-        type: ObjectId,
-        required: true
-    },
-    creationDate: {
-        type: Date,
-        required: true
-    },
+let prescriptionSchema = mongoose.Schema(
+  {
     image: {
-        type: Buffer,
-        required: true
+      type: String,
+      required: true,
     },
     status: {
-        type: String,
-        enum: ['pending', 'completed', 'cancelled'],
-        required: true
+      type: String,
+      enum: ['Assigned', 'Dispatched', 'Delivered', 'Cancelled'],
+      required: true,
     },
-    completionDate: {
-        type: Date,
-        required: false
-    }
-});
+    doctor: {
+      type: ObjectId,
+      ref: 'User',
+      required: true,
+    },
+    pharmacy: {
+      type: ObjectId,
+      ref: 'User',
+      required: true,
+    },
+    patient: {
+      type: ObjectId,
+      ref: 'User',
+      required: true,
+    },
+  },
+  { timestamps: true }
+);
 
-let Prescription = module.exports = mongoose.model('Prescription', prescriptionSchema);
+module.exports = mongoose.model('Prescription', prescriptionSchema);
